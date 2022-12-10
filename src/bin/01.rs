@@ -57,14 +57,15 @@ pub fn part_two(input: &str) -> Option<u32> {
         .collect::<Vec<u32>>();
     let mut current_calories: u32 = 0;
     let mut top_three = TopThree(0, 0, 0);
-    for (ix, calorie_item) in u32_vec.iter().enumerate() {
-        if calorie_item.clone() == 0 || (ix + 1 == input.len()) {
+    for calorie_item in u32_vec.iter() {
+        if calorie_item.clone() == 0 {
             top_three.insert(current_calories);
             current_calories = 0;
         } else {
             current_calories += calorie_item;
         }
     }
+    top_three.insert(current_calories);
     Some(top_three.sum())
 }
 
@@ -81,12 +82,12 @@ mod tests {
     #[test]
     fn test_part_one() {
         let input = advent_of_code::read_file("examples", 1);
-        assert_eq!(part_one(&input), None);
+        assert_eq!(part_one(&input), Some(24000));
     }
 
     #[test]
     fn test_part_two() {
         let input = advent_of_code::read_file("examples", 1);
-        assert_eq!(part_two(&input), None);
+        assert_eq!(part_two(&input), Some(45000));
     }
 }

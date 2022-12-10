@@ -1,5 +1,5 @@
-use std::time::Instant;
 use advent_of_code::{ANSI_ITALIC, ANSI_RESET};
+use std::time::Instant;
 
 #[derive(PartialEq, Eq)]
 enum Hand {
@@ -114,12 +114,12 @@ mod tests {
     #[test]
     fn test_part_one() {
         let input = advent_of_code::read_file("examples", 2);
-        assert_eq!(part_one(&input), 15);
+        assert_eq!(part_one(&input), Some(15));
     }
 
     #[test]
     fn test_part_two() {
         let input = advent_of_code::read_file("examples", 2);
-        assert_eq!(part_two(&input), None);
+        assert_eq!(part_two(&input), Some(12));
     }
 }
