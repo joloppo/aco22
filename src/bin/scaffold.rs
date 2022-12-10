@@ -8,16 +8,33 @@ use std::{
     process,
 };
 
-const MODULE_TEMPLATE: &str = r###"pub fn part_one(input: &str) -> Option<u32> {
-    None
+const MODULE_TEMPLATE: &str = r###"use std::time::Instant;
+use advent_of_code::{ANSI_ITALIC, ANSI_RESET};
+
+pub fn part_one(input: &str) -> Option<u32> {
+    let result = input
+        .lines()
+        .map(|line: &str| 0)
+        .sum::<u32>();
+    Some(result)
 }
 
 pub fn part_two(input: &str) -> Option<u32> {
-    None
+    let result = input
+    .lines()
+    .map(|line: &str| 0)
+    .sum::<u32>();
+    Some(result)
 }
 
 fn main() {
+    let timer = Instant::now();
     let input = &advent_of_code::read_file("inputs", DAY);
+    let elapsed = timer.elapsed();
+    println!(
+        "{} {}(elapsed: {:.2?}){}",
+        "File load", ANSI_ITALIC, elapsed, ANSI_RESET
+    );
     advent_of_code::solve!(1, part_one, input);
     advent_of_code::solve!(2, part_two, input);
 }
